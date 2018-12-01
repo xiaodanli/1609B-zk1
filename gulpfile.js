@@ -2,7 +2,7 @@
  * @Author: 李晓丹 
  * @Date: 2018-12-01 08:11:42 
  * @Last Modified by: 李晓丹
- * @Last Modified time: 2018-12-01 08:24:27
+ * @Last Modified time: 2018-12-01 09:10:11
  */
 
 var gulp = require('gulp');
@@ -18,6 +18,8 @@ var url = require('url');
 var fs = require('fs');
 
 var path = require('path');
+
+var swiper = require('./mock/swiper.json');
 
 //编译scss
 gulp.task('devScss',function(){
@@ -46,13 +48,18 @@ gulp.task('devServer',function(){
                 return 
             }
 
-            pathname = pathname === '/' ? 'index.html' : pathname;
+            if(pathname === '/api/swiper'){
+                res.end(JSON.stringify({code:1,data:swiper}));
+            }else{
+                pathname = pathname === '/' ? 'index.html' : pathname;
 
-            res.end(fs.readFileSync(path.join(__dirname,'src',pathname)));
-            
-       }
+                res.end(fs.readFileSync(path.join(__dirname,'src',pathname)));
+            }
+        }
     }))
 })
 
 //开发环境
 gulp.task('dev',gulp.series('devScss','devServer','watch'))
+
+
