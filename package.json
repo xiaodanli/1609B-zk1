@@ -4,7 +4,9 @@
   "description": "1609B-zk1",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"gulp dev",
+    "build":"gulp build"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/xiaodanli/1609B-zk1/issues"
   },
-  "homepage": "https://github.com/xiaodanli/1609B-zk1#readme"
+  "homepage": "https://github.com/xiaodanli/1609B-zk1#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "gulp-babel": "^8.0.0"
+  }
 }
